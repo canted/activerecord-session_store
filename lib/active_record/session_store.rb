@@ -5,11 +5,11 @@ module ActiveRecord
   module SessionStore
     module ClassMethods # :nodoc:
       def marshal(data)
-        ::Base64.encode64(Marshal.dump(data)) if data
+        data
       end
 
       def unmarshal(data)
-        Marshal.load(::Base64.decode64(data)) if data
+        data
       end
 
       def drop_table!
