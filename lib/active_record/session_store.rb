@@ -2,22 +2,14 @@ require 'action_dispatch/session/active_record_store'
 require "active_record/session_store/extension/logger_silencer"
 require 'json'
 
-my_hash = {:hello => "goodbye"}
-puts JSON.generate(my_hash) => "{\"hello\":\"goodbye\"}"
-
 module ActiveRecord
   module SessionStore
     module ClassMethods # :nodoc:
       def marshal(data)
-        puts "MARSHAL"
-        puts JSON.generate(data)
-        
         JSON.generate(data) if data
       end
 
       def unmarshal(data)
-        puts "UNMARSHAL"
-        puts JSON.parse(data)
         JSON.parse(data) if data
       end
 
