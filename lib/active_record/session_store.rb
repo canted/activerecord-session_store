@@ -5,11 +5,11 @@ module ActiveRecord
   module SessionStore
     module ClassMethods # :nodoc:
       def marshal(data)
-        data
+        Marshal.dump(data) if data
       end
 
       def unmarshal(data)
-        data
+        Marshal.load(data) if data
       end
 
       def drop_table!
