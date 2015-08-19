@@ -5,10 +5,14 @@ module ActiveRecord
   module SessionStore
     module ClassMethods # :nodoc:
       def marshal(data)
+        puts "MARSHAL"
+        puts data
         Marshal.dump(data) if data
       end
 
       def unmarshal(data)
+        puts "UNMARSHAL"
+        puts data
         Marshal.load(data) if data
       end
 
